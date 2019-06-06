@@ -56,10 +56,6 @@ module.exports = class Matrix2d {
 		this._matrix = _init(this.xSize(), this.ySize(), value);
 	}
 
-	copy() {
-		return object_util.copy(this._matrix);
-	}
-
 	equal(matrix) {
 		if (
 			(object_util.notHave(matrix, 'xSize'))
@@ -72,7 +68,11 @@ module.exports = class Matrix2d {
 		) {
 			return false;
 		}
-		return object_util.equal(this._matrix, matrix.copy());
+		return object_util.equal(this._matrix, matrix.raw());
+	}
+
+	raw() {
+		return object_util.copy(this._matrix);
 	}
 
 }
