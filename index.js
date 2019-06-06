@@ -1,20 +1,19 @@
 /* jshint esversion: 6 */
 // Copyright (c) 2019 Seán D. Murray
 // SEE MIT LICENSE FILE
-const isit = require('prose_isit');
 const number_util = require('prose_number');
 const object_util = require('prose_object');
 
-function _init (xSize, ySize, value) {
-  const result = [];
-  for (let x = 0; x < xSize; x++) {
-    const inner = [];
-    for (let y = 0; y < ySize; y++) {
-      inner.push(value);
-    }
-    result.push(inner);
-  }
-  return result;
+function _init(xSize, ySize, value) {
+	const result = [];
+	for (let x = 0; x < xSize; x++) {
+		const inner = [];
+		for (let y = 0; y < ySize; y++) {
+			inner.push(value);
+		}
+		result.push(inner);
+	}
+	return result;
 }
 
 function validCoordinates(x, y, xSize, ySize) {
@@ -34,11 +33,11 @@ module.exports = class Matrix2d {
 		this._matrix = _init(xSize, ySize, defaultValue);
 	}
 
-	xSize () {
+	xSize() {
 		return this._matrix.length;
 	}
 
-	ySize () {
+	ySize() {
 		return (this._matrix[0]).length;
 	}
 
@@ -58,12 +57,9 @@ module.exports = class Matrix2d {
 
 	equal(matrix) {
 		if (
-			(object_util.notHave(matrix, 'xSize'))
-			||
-			(object_util.notHave(matrix, 'ySize'))
-			||
-			(this.xSize() !== matrix.xSize())
-			||
+			(object_util.notHave(matrix, 'xSize')) ||
+			(object_util.notHave(matrix, 'ySize')) ||
+			(this.xSize() !== matrix.xSize()) ||
 			(this.ySize() !== matrix.ySize())
 		) {
 			return false;
@@ -75,4 +71,4 @@ module.exports = class Matrix2d {
 		return object_util.copy(this._matrix);
 	}
 
-}
+};
